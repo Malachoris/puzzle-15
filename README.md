@@ -21,7 +21,11 @@ Returns map with active games and boards.
 Returns active game and board.
 
 ### PUT /api/game/{gameId}/move
-Switche positions of integer number tile with an 0 value tile.
+Switch positions of integer tile with the 0 value tile.
+jason request looks like this:
+{ 
+"tileValue" : 8 
+}
 
 ### GET /api/game/{gameId}/complete
 Checks game by ID and returns true if game is won.
