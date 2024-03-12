@@ -1,6 +1,5 @@
-package com.example.springboot15puzzle.service;
+package com.example.springboot15puzzle.model;
 
-import com.example.springboot15puzzle.model.PuzzleLogic;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
