@@ -1,5 +1,6 @@
 package com.example.springboot15puzzle.service;
 
+import com.example.springboot15puzzle.model.PuzzleLogic;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,9 +9,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PuzzleLogicServiceTest {
+class PuzzleLogicTest {
 
-    private final PuzzleLogicService puzzleLogicService = new PuzzleLogicService(4);
+    private final PuzzleLogic puzzleLogic = new PuzzleLogic(4);
 
     @Test
     public void testIsGameWon() {
@@ -43,7 +44,7 @@ class PuzzleLogicServiceTest {
 
     @Test
     public void testMatrixGameBoard(){
-        List<List<Integer>> getMatrixGameBoard = puzzleLogicService.getMatrixGameBoard();
+        List<List<Integer>> getMatrixGameBoard = puzzleLogic.getMatrixGameBoard();
         assertNotNull(getMatrixGameBoard);
         assertEquals(4, getMatrixGameBoard.size());
         assertEquals(4, getMatrixGameBoard.get(0).size());
@@ -54,7 +55,7 @@ class PuzzleLogicServiceTest {
 
     @Test
     public void testNumberRange(){
-        List<List<Integer>> gameState = puzzleLogicService.getMatrixGameBoard();
+        List<List<Integer>> gameState = puzzleLogic.getMatrixGameBoard();
         for(List<Integer> row : gameState){
             for(int tile : row){
                 assertTrue(tile >= 0 && tile <= 15);

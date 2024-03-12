@@ -1,7 +1,7 @@
 package com.example.springboot15puzzle.controller;
 
 import com.example.springboot15puzzle.dto.MoveRequest;
-import com.example.springboot15puzzle.service.PuzzleLogicService;
+import com.example.springboot15puzzle.model.PuzzleLogic;
 import com.example.springboot15puzzle.service.PuzzleManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,8 +25,8 @@ public class PuzzleController {
     }
 
     @GetMapping("/IDs")
-    public ResponseEntity<Map<String, PuzzleLogicService>> getGameIds(){
-        Map<String, PuzzleLogicService> gameIds = puzzleManagerService.getActiveGameIds();
+    public ResponseEntity<Map<String, PuzzleLogic>> getGameIds(){
+        Map<String, PuzzleLogic> gameIds = puzzleManagerService.getActiveGameIds();
         return ResponseEntity.ok().body(gameIds);
     }
 

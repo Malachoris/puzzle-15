@@ -1,16 +1,16 @@
-package com.example.springboot15puzzle.service;
+package com.example.springboot15puzzle.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PuzzleLogicService{
+public class PuzzleLogic {
 
     private List<Integer> flatGameBoard;
     private List<List<Integer>> matrixGameBoard;
     private final int boardSize;
 
-    public PuzzleLogicService(int boardSize) {
+    public PuzzleLogic(int boardSize) {
         this.boardSize = boardSize;
         initializeFlatBoard();
         initializeShuffledMatrixBoard();

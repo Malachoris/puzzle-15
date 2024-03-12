@@ -1,5 +1,6 @@
 package com.example.springboot15puzzle.service;
 
+import com.example.springboot15puzzle.model.PuzzleLogic;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -9,7 +10,7 @@ import java.util.UUID;
 
 @Service
 public class PuzzleManagerService {
-    private final Map<String, PuzzleLogicService> games;
+    private final Map<String, PuzzleLogic> games;
 
     public PuzzleManagerService() {
         this.games = new HashMap<>();
@@ -17,15 +18,15 @@ public class PuzzleManagerService {
     }
 
     // Returns map IDs as keys and games as value.
-    public Map<String, PuzzleLogicService> getActiveGameIds(){
+    public Map<String, PuzzleLogic> getActiveGameIds(){
         return games;
     }
 
     // Creates new game.
     public String createGame(){
         String gameId = generateGameId();
-        PuzzleLogicService puzzleLogicService = new PuzzleLogicService(4);
-        games.put(gameId, puzzleLogicService);
+        PuzzleLogic puzzleLogic = new PuzzleLogic(4);
+        games.put(gameId, puzzleLogic);
         return gameId;
     }
 
@@ -36,30 +37,30 @@ public class PuzzleManagerService {
 
     // Returns game by ID.
     public List<List<Integer>> getMatrixGameBoard(String gameId) {
-        PuzzleLogicService puzzleLogicService = games.get(gameId);
-        if (puzzleLogicService == null) {
+        PuzzleLogic puzzleLogic = games.get(gameId);
+        if (puzzleLogic == null) {
             throw new IllegalArgumentException("Game not found");
         }
-        return puzzleLogicService.getMatrixGameBoard();
+        return puzzleLogic.getMatrixGameBoard();
 
     }
 
     // Moves tile to adjacent empty tile.
     public void moveTile(String gameId, int tileValue) {
-        PuzzleLogicService puzzleLogicService = games.get(gameId);
-        if (puzzleLogicService == null) {
+        PuzzleLogic puzzleLogic = games.get(gameId);
+        if (puzzleLogic == null) {
             throw new IllegalArgumentException("Game not found");
         }
-        puzzleLogicService.moveTile(tileValue);
+        puzzleLogic.moveTile(tileValue);
     }
 
     // Check if game is won.
     public boolean isGameWon(String gameId) {
-        PuzzleLogicService puzzleLogicService = games.get(gameId);
-        if (puzzleLogicService == null) {
+        PuzzleLogic puzzleLogic = games.get(gameId);
+        if (puzzleLogic == null) {
             throw new IllegalArgumentException("Game not found");
         }
-        return puzzleLogicService.isGameWon();
+        return puzzleLogic.isGameWon();
     }
 
 }
